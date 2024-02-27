@@ -23,7 +23,6 @@ Before diving into model training, it's crucial to preprocess the data to enhanc
 **Technique:** IQR-based Outlier Removal
 **Explanation:** Outliers in the 'price' column were detected and removed using the Interquartile Range (IQR) method to improve the model's robustness.
 
-# Feature Engineering
 
 # Dropping Unused Categorical Features
 
