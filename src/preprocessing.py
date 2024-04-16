@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
 def load_data(filepath):
-    data = pd.read_csv(filepath)
+    data = pd.read_csv('/content/sample_data/nigeria_houses_data.csv')
     return data
 
 def clean_data(data):
