@@ -2,6 +2,19 @@ import streamlit as st
 import numpy as np
 import pickle
 
+import os
+
+# Define the directory path
+models_dir = '../models'
+
+# Check if the directory exists, and create it if it doesn't
+if not os.path.exists(models_dir):
+    os.makedirs(models_dir)
+    print(f"Directory '{models_dir}' created successfully.")
+else:
+    print(f"Directory '{models_dir}' already exists.")
+
+
 # Load the model
 model = pickle.load(open('../models/house_pricing_model.pkl', 'rb'))
 
