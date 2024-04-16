@@ -5,7 +5,7 @@ import pickle
 import os
 
 # Load the model
-model = pickle.load(open('saved_models/.model1.pkl.swp', 'rb'))
+model = pickle.load(open('saved_models/house_pricing_model.pkl', 'rb'))
 
 st.title('House Pricing Prediction App')
 
