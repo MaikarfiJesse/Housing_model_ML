@@ -1,0 +1,43 @@
+import pickle
+from sklearn.ensemble import RandomForestRegressor
+
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Assuming 'data' is your DataFrame and 'price' is the target variable
+X = data.drop('price', axis=1)  # Features without the target
+y = data['price']  # Target variable
+
+# Splitting the dataset into training (70%), and a temporary set (30%)
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Further splitting the temporary set into validation and test sets (50% of temp each, 15% of total each)
+X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
+
+# Before scaling
+print("Before Scaling:")
+# print(X_train.head())
+print(X_train[:1])
+
+# Initializing the Min-Max Scaler
+scaler = MinMaxScaler()
+
+# Fitting the scaler to the training data only
+scaler.fit(X_train)
+
+# Transforming the training data
+X_train_scaled = scaler.transform(X_train)
+
+# Creating a DataFrame for the scaled training data for easy viewing
+# X_train_scaled_df = pd.DataFrame(X_train_scaled, columns=X_train.columns)
+
+# After scaling
+print("\nAfter Scaling:")
+print(X_train_scaled[:1])
+
+# Serialize (pickle) the trained model and save it to a file
+with open('house_pricing_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+print("Model saved to 'house_pricing_model.pkl'")
